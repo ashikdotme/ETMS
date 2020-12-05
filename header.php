@@ -29,6 +29,7 @@ if(!isset($_SESSION['em_user'])){
 
     <!-- Custom styles for this template-->
     <link href="assets/css/sb-admin-2.min.css" rel="stylesheet">
+    <link href="assets/css/custom.css" rel="stylesheet">
 
 </head>
 
@@ -147,12 +148,23 @@ if(!isset($_SESSION['em_user'])){
                                 ?>
                             </span>
                                 <img class="img-profile rounded-circle"
-                                    src="assets/img/undraw_profile.svg">
+                                    src="
+                                    <?php 
+                                    $photo = em_user($_SESSION['em_user'][0]['u_id'],'photo');
+                                    if($photo == null){
+                                        echo "assets/img/undraw_profile.svg";
+                                    }else{
+                                        echo "profilephotos/".$photo;                                        
+                                    }
+                                     ?>
+                                    
+                                    
+                                    ">
                             </a>
                             <!-- Dropdown - User Information -->
                             <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
                                 aria-labelledby="userDropdown">
-                                <a class="dropdown-item" href="#">
+                                <a class="dropdown-item" href="profile.php">
                                     <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                                     Profile
                                 </a>
@@ -160,9 +172,13 @@ if(!isset($_SESSION['em_user'])){
                                     <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
                                     Settings
                                 </a>
-                                <a class="dropdown-item" href="#">
+                                <a class="dropdown-item" href="changePassword.php">
                                     <i class="fas fa-lock fa-sm fa-fw mr-2 text-gray-400"></i>
                                     Change Password
+                                </a>
+                                <a class="dropdown-item" href="profilePhoto.php">
+                                    <i class="fas fa-lock fa-sm fa-fw mr-2 text-gray-400"></i>
+                                    Update Photo
                                 </a>
                                 <div class="dropdown-divider"></div>
                                 <a class="dropdown-item" href="logout.php">
