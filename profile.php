@@ -1,5 +1,8 @@
 <?php require_once('header.php');
 $user_id = $_SESSION['em_user'][0]['u_id'];
+ 
+$mobile_verify_status = em_user($user_id,'mobile_verify');
+
 ?>
 
 <h1 class="h3 mb-4 text-gray-800 d-inline-block">Profile</h1> &nbsp;&nbsp; &nbsp;<a class="btn btn-sm btn-info" href="profileUpdate.php?uid=<?php echo $user_id; ?>">Update Profile</a>
@@ -25,7 +28,12 @@ $user_id = $_SESSION['em_user'][0]['u_id'];
 
 				<tr>
 					<th>Mobile:</th>
-					<td><?php echo em_user($user_id,'mobile');?></td> 
+					<td><?php echo em_user($user_id,'mobile');?>
+						<?php if($mobile_verify_status  == 1){
+							echo '<span class="badge badge-success"><i title="Mobile Veirfied!"   class="fa fa-check"></i></span>';
+						} ?>
+
+					</td> 
 				</tr>
 
 				<tr>

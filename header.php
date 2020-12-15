@@ -29,6 +29,8 @@ if(!isset($_SESSION['em_user'])){
 
     <!-- Custom styles for this template-->
     <link href="assets/css/sb-admin-2.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/jquery-ui-timepicker-addon/1.6.3/jquery-ui-timepicker-addon.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
     <link href="assets/css/custom.css" rel="stylesheet">
 
 </head>
@@ -71,7 +73,7 @@ if(!isset($_SESSION['em_user'])){
                 </a>
                 <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded"> 
-                        <a class="collapse-item" href="buttons.html">Today Attendance</a>
+                        <a class="collapse-item" href="todayAttendance.php">Today Attendance</a>
                         <a class="collapse-item" href="cards.html">All Attendance</a>
                     </div>
                 </div>
