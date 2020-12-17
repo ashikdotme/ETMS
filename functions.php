@@ -38,4 +38,29 @@ function em_att_submit($date,$user_id){
 
 // echo em_att_submit('2020-12-20','2');
 
+function checkAttendance($user_id,$checkDate){
+    global $pdo;
+    $stm=$pdo->prepare("SELECT * FROM em_attendance WHERE em_id=? AND DATE(user_time) = ?");
+    $stm->execute(array($user_id,$checkDate));
+    // $result=$stm->fetchAll(PDO::FETCH_ASSOC);
+    // return $result[0]["$col"];
+    // $user_time = $result[0]["user_time"];
+    // return date('Y-m-d',strtotime($user_time));
+
+    return $result = $stm->rowCount();
+}
+
+
+function checkAttInfo($user_id,$checkDate,$col){
+    global $pdo;
+    $stm=$pdo->prepare("SELECT * FROM em_attendance WHERE em_id=? AND DATE(user_time) = ?");
+    $stm->execute(array($user_id,$checkDate));
+    $result=$stm->fetchAll(PDO::FETCH_ASSOC);
+    return $result[0]["$col"];
+    
+}
+
+
+// echo checkAttInfo(1,'2020-12-17','user_time');
+
  ?>

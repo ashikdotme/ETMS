@@ -14,7 +14,7 @@ if(isset($_POST['submit_attendance'])){
 	$att_datetime = $_POST['att_datetime'];
 	// 12/15/2020 05:10 PM
 	$date = $att_datetime;
-	$date = str_replace('/', '-', $date);
+	// $date = str_replace('/', '-', $date);
 	$newdate = date('Y-m-d H:i:s', strtotime($date));
 	
 	$today = date('Y-m-d');
