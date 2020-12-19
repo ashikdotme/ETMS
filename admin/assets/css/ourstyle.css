@@ -1,0 +1,23 @@
+.verify_status {
+	width: 15px;
+	height: 15px;
+	display: inline-block;
+	background: #54ca68;
+	color: #FFF;
+	border-radius: 50%;
+	font-size: 8px;
+	text-align: center;
+	line-height: 16px;
+}
+
+.not_verify_status {
+	width: 15px;
+	height: 15px;
+	display: inline-block;
+	background: #fc544b;
+	color: #FFF;
+	border-radius: 50%;
+	font-size: 8px;
+	text-align: center;
+	line-height: 16px;
+}

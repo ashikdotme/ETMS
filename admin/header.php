@@ -21,16 +21,19 @@ $ad_id = $_SESSION['em_admin'][0]['ad_id'];
   <title>ETMS - Admin Dashbaord</title>
   <!-- General CSS Files -->
   <link rel="stylesheet" href="assets/css/app.min.css">
+  <link rel="stylesheet" href="assets/bundles/datatables/datatables.min.css">
+  <link rel="stylesheet" href="assets/bundles/datatables/DataTables-1.10.16/css/dataTables.bootstrap4.min.css">
   <!-- Template CSS -->
   <link rel="stylesheet" href="assets/css/style.css">
   <link rel="stylesheet" href="assets/css/components.css">
   <!-- Custom style CSS -->
   <link rel="stylesheet" href="assets/css/custom.css">
+  <link rel="stylesheet" href="assets/css/ourstyle.css">
   <link rel='shortcut icon' type='image/x-icon' href='assets/img/favicon.ico' />
 </head>
 
 <body>
-  <div class="loader"></div>
+  <!-- <div class="loader"></div> -->
   <div id="app">
     <div class="main-wrapper main-wrapper-1">
       <div class="navbar-bg"></div>
@@ -91,7 +94,7 @@ $ad_id = $_SESSION['em_admin'][0]['ad_id'];
               <a href="#" class="menu-toggle nav-link has-dropdown"><i
                   data-feather="briefcase"></i><span>Employee</span></a>
               <ul class="dropdown-menu">
-                <li><a class="nav-link" href="widget-chart.html">All Employee</a></li> 
+                <li><a class="nav-link" href="emAll.php">All Employee</a></li> 
               </ul>
             </li>
             <li class="dropdown">

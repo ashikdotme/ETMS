@@ -8,6 +8,7 @@ if(!isset($_SESSION['em_user'])){
     header('location:login.php');
 }
 
+$user_id = $_SESSION['em_user'][0]['u_id'];
 
  ?>
 <!DOCTYPE html>
@@ -83,10 +84,24 @@ if(!isset($_SESSION['em_user'])){
             <li class="nav-item">
                 <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapse3"
                     aria-expanded="true" aria-controls="collapse3">
+                    <i class="fas fa-fw fa-laptop"></i>
+                    <span>Practice Class</span>
+                </a>
+                <div id="collapse3" class="collapse" aria-labelledby="heading2" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded"> 
+                        <a class="collapse-item" href="ClassNew.php">New Class</a>
+                        <a class="collapse-item" href="ClassAll.php">All Practice</a>
+                    </div>
+                </div>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapse4"
+                    aria-expanded="true" aria-controls="collapse4">
                     <i class="fas fa-fw fa-cog"></i>
                     <span>My Task</span>
                 </a>
-                <div id="collapse3" class="collapse" aria-labelledby="heading2" data-parent="#accordionSidebar">
+                <div id="collapse4" class="collapse" aria-labelledby="heading4" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded"> 
                         <a class="collapse-item" href="buttons.html">New Task</a>
                         <a class="collapse-item" href="cards.html">All Task</a>
@@ -122,19 +137,7 @@ if(!isset($_SESSION['em_user'])){
                         <i class="fa fa-bars"></i>
                     </button>
 
-                    <!-- Topbar Search -->
-                    <form
-                        class="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
-                        <div class="input-group">
-                            <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..."
-                                aria-label="Search" aria-describedby="basic-addon2">
-                            <div class="input-group-append">
-                                <button class="btn btn-primary" type="button">
-                                    <i class="fas fa-search fa-sm"></i>
-                                </button>
-                            </div>
-                        </div>
-                    </form>
+                    <h5>Hello, <?php echo em_user($user_id,'first_name')." ".em_user($user_id,'last_name') ?> <span style="color:#3057C9">Welcome to Coder IT ETMS</span></h5>
 
                     <!-- Topbar Navbar -->
                     <ul class="navbar-nav ml-auto">
