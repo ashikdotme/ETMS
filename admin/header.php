@@ -100,8 +100,8 @@ $ad_id = $_SESSION['em_admin'][0]['ad_id'];
             <li class="dropdown">
               <a href="#" class="menu-toggle nav-link has-dropdown"><i data-feather="command"></i><span>Attendance</span></a>
               <ul class="dropdown-menu">
-                <li><a class="nav-link" href="">Today Attendance</a></li>
-                <li><a class="nav-link" href="portfolio.html">All Attendance</a></li> 
+                <li><a class="nav-link" href="AttToday.php">Today Attendance</a></li>
+                <li><a class="nav-link" href="AttMonthly.php">Monthly Attendance</a></li> 
               </ul>
             </li>
             <li class="dropdown">

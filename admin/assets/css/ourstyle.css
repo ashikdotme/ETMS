@@ -21,3 +21,12 @@
 	text-align: center;
 	line-height: 16px;
 }
+
+
+.filter_atts form {
+	display: flex;
+	align-items: center;
+}
+.filter_atts form .form-group {
+	margin: 0 20px;
+}

@@ -17,7 +17,14 @@ function em_user($id,$col){
    	$result=$stm->fetchAll(PDO::FETCH_ASSOC);
     return $result[0]["$col"];
 }
- 
+function em_user_count(){
+    global $pdo;
+    $stm=$pdo->prepare("SELECT * FROM em_users");
+    $stm->execute();
+    $count=$stm->rowCount();
+    return $count;
+}
+
 function em_admin($id,$col){
     global $pdo;
     $stm=$pdo->prepare("SELECT $col FROM em_admins WHERE ad_id=?");
@@ -50,6 +57,17 @@ function checkAttendance($user_id,$checkDate){
     return $result = $stm->rowCount();
 }
 
+function checkAttendanceCount($checkDate){
+    global $pdo;
+    $stm=$pdo->prepare("SELECT * FROM em_attendance WHERE DATE(user_time) = ?");
+    $stm->execute(array($checkDate));
+    // $result=$stm->fetchAll(PDO::FETCH_ASSOC);
+    // return $result[0]["$col"];
+    // $user_time = $result[0]["user_time"];
+    // return date('Y-m-d',strtotime($user_time));
+
+    return $result = $stm->rowCount();
+}
 
 function checkAttInfo($user_id,$checkDate,$col){
     global $pdo;
