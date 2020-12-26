@@ -65,18 +65,7 @@ if(isset($_POST['submit_attendance'])){
 				<div class="alert alert-danger" id="locationError">
 					
 				</div>
-
-				<?php 
-					$today = date('Y-m-d');
-					$today_attendance = em_att_submit($today,$user_id);
-
-				if($today_attendance == 1 ) : ?>
-				<div class="alert alert-success">
-					Already Submitted your Attendance.
-				</div>
-				<?php endif; ?>
-
-
+				
 				<div class="form-group">
 					<label for="attendance">
 					    <input class="custom-checkbox" value="1" type="checkbox" name="attendance" id="attendance" checked> Present

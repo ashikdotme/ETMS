@@ -105,11 +105,19 @@ $ad_id = $_SESSION['em_admin'][0]['ad_id'];
               </ul>
             </li>
             <li class="dropdown">
-              <a href="#" class="menu-toggle nav-link has-dropdown"><i data-feather="mail"></i><span>Task</span></a>
+              <a href="#" class="menu-toggle nav-link has-dropdown"><i data-feather="layers"></i>
+                <span>Practice Classes</span></a>
               <ul class="dropdown-menu">
-                <li><a class="nav-link" href="email-inbox.html">Today Task</a></li>
-                <li><a class="nav-link" href="email-compose.html">All Task</a></li>
-                <li><a class="nav-link" href="email-read.html">New Task</a></li>
+                <li><a class="nav-link" href="ClassToday.php">Today Class</a></li>
+                <li><a class="nav-link" href="ClassAll.php">All Class</a></li> 
+              </ul>
+            </li>
+            <li class="dropdown">
+              <a href="#" class="menu-toggle nav-link has-dropdown"><i data-feather="clipboard"></i><span>Task</span></a>
+              <ul class="dropdown-menu">
+                <li><a class="nav-link" href="#">Today Task</a></li>
+                <li><a class="nav-link" href="#">All Task</a></li>
+                <li><a class="nav-link" href="#">New Task</a></li>
               </ul>
             </li>
             

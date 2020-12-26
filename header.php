@@ -103,8 +103,8 @@ $user_id = $_SESSION['em_user'][0]['u_id'];
                 </a>
                 <div id="collapse4" class="collapse" aria-labelledby="heading4" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded"> 
-                        <a class="collapse-item" href="buttons.html">New Task</a>
-                        <a class="collapse-item" href="cards.html">All Task</a>
+                        <a class="collapse-item" href="#">New Task</a>
+                        <a class="collapse-item" href="#">All Task</a>
                     </div>
                 </div>
             </li>
