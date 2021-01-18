@@ -2,9 +2,11 @@
 require_once('config.php');
 session_start();
 
+
 if(isset($_POST['login_submit'])){
     $user_mobile = $_POST['user_mobile'];
     $user_password = $_POST['user_password'];
+
 
     if(empty($user_mobile) OR empty($user_password)){
         $error = "Mobile and Password is Required!";
@@ -19,10 +21,22 @@ if(isset($_POST['login_submit'])){
         if($userCount == 1){
             $user_password = SHA1($user_password);
             $dbPassword = $userData[0]['password'];
+            $u_id = $userData[0]['u_id'];
 
             if($user_password == $dbPassword){
                 $_SESSION['em_user'] = $userData;
                 header('location:index.php');
+
+                if(isset($_POST['remember'])){
+                    $remember = $_POST['remember'];
+                    if($remember == 1){
+                        setcookie('rememberUser',$u_id,time()+3600,'/');
+                    }else{
+                         setcookie('rememberUser',$u_id,time()-3600,'/');
+                    }
+                }
+
+
             }else{
                  $error = "Mobile Number or Password is Wrong!";
             }
@@ -95,13 +109,13 @@ if(isset($_SESSION['em_user'])){
                                             <input type="password" name="user_password" class="form-control form-control-user"
                                                 id="exampleInputPassword" placeholder="Password">
                                         </div>
-                                       <!--  <div class="form-group">
+                                        <div class="form-group">
                                             <div class="custom-control custom-checkbox small">
-                                                <input type="checkbox" class="custom-control-input" id="customCheck">
+                                                <input type="checkbox" value="1" name="remember" class="custom-control-input" id="customCheck">
                                                 <label class="custom-control-label" for="customCheck">Remember
                                                     Me</label>
                                             </div>
-                                        </div> -->
+                                        </div>
                                         <input name="login_submit" type="submit" class="btn btn-primary btn-user btn-block" value="Login">
                                          
                                         <hr>
@@ -109,7 +123,7 @@ if(isset($_SESSION['em_user'])){
                                     </form>
                                     <hr>
                                     <div class="text-center">
-                                        <a class="small" href="#">Forgot Password?</a>
+                                        <a class="small" href="forgot-password.php">Forgot Password?</a>
                                     </div>
                                     <div class="text-center">
                                         <a class="small" href="register.php">Create an Account!</a>

@@ -23,6 +23,10 @@ $ad_id = $_SESSION['em_admin'][0]['ad_id'];
   <link rel="stylesheet" href="assets/css/app.min.css">
   <link rel="stylesheet" href="assets/bundles/datatables/datatables.min.css">
   <link rel="stylesheet" href="assets/bundles/datatables/DataTables-1.10.16/css/dataTables.bootstrap4.min.css">
+
+  <link rel="stylesheet" href="assets/bundles/summernote/summernote-bs4.css"> 
+
+
   <!-- Template CSS -->
   <link rel="stylesheet" href="assets/css/style.css">
   <link rel="stylesheet" href="assets/css/components.css">
@@ -115,9 +119,9 @@ $ad_id = $_SESSION['em_admin'][0]['ad_id'];
             <li class="dropdown">
               <a href="#" class="menu-toggle nav-link has-dropdown"><i data-feather="clipboard"></i><span>Task</span></a>
               <ul class="dropdown-menu">
-                <li><a class="nav-link" href="#">Today Task</a></li>
-                <li><a class="nav-link" href="#">All Task</a></li>
-                <li><a class="nav-link" href="#">New Task</a></li>
+                <li><a class="nav-link" href="TaskNew.php">New Task</a></li>
+                <li><a class="nav-link" href="TaskUnderReview.php">Under Review</a></li>
+                <li><a class="nav-link" href="TaskAll.php">All Task</a></li>
               </ul>
             </li>
             

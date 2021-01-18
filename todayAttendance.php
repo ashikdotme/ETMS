@@ -1,7 +1,14 @@
 <?php require_once('header.php'); ?>
 <h1 class="h3 mb-4 text-gray-800">Attendance</h1>
 <?php 
-$user_id = $_SESSION['em_user'][0]['u_id'];
+
+if(isset($_COOKIE['rememberUser'])){
+    $user_id = $_COOKIE['rememberUser'];
+}else{
+    $user_id = $_SESSION['em_user'][0]['u_id'];
+}
+
+
 if(isset($_POST['submit_attendance'])){
 	$user_id = $_SESSION['em_user'][0]['u_id'];
 	$ip_address = $_SERVER['SERVER_ADDR'];

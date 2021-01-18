@@ -81,4 +81,77 @@ function checkAttInfo($user_id,$checkDate,$col){
 
 // echo checkAttInfo(1,'2020-12-17','user_time');
 
+// Get Monthly Total Attendance..
+function checkAttEMCount($year,$month,$emID){
+    global $pdo;
+    $stm=$pdo->prepare("SELECT user_time,em_id FROM em_attendance WHERE YEAR(user_time) = ? AND MONTH(user_time) = ? AND em_id=?");
+    $stm->execute(array($year,$month,$emID));
+
+    return $result = $stm->rowCount();
+}
+
+// Get Monthly Total Practice Class
+function MonthlyPracticeClass($year,$month,$emID){
+    global $pdo;
+    $stm=$pdo->prepare("SELECT date_time,user_id FROM em_class WHERE YEAR(date_time) = ? AND MONTH(date_time) = ? AND user_id=?");
+    $stm->execute(array($year,$month,$emID));
+
+    return $result = $stm->rowCount();
+}
+
+// Get Monthly Total Pending Task
+function MonthlyTask($year,$month,$emID,$status){
+    global $pdo;
+    $stm=$pdo->prepare("SELECT date_time,user_id FROM em_task WHERE YEAR(date_time) = ? AND MONTH(date_time) = ? AND user_id=? AND status=?");
+    $stm->execute(array($year,$month,$emID,$status));
+
+    return $result = $stm->rowCount();
+}
+
+function MonthlyTotalTask($year,$month,$emID){
+    global $pdo;
+    $stm=$pdo->prepare("SELECT date_time,user_id FROM em_task WHERE YEAR(date_time) = ? AND MONTH(date_time) = ? AND user_id=?");
+    $stm->execute(array($year,$month,$emID));
+
+    return $result = $stm->rowCount();
+}
+
+/************* Yearly Report **************/
+
+// Get Yearly Total Attendance..
+function checkAttEYCount($year,$emID){
+    global $pdo;
+    $stm=$pdo->prepare("SELECT user_time,em_id FROM em_attendance WHERE YEAR(user_time) = ? AND em_id=?");
+    $stm->execute(array($year,$emID));
+
+    return $result = $stm->rowCount();
+}
+
+// Get Yearly Total Practice Class
+function YearPracticeClass($year,$emID){
+    global $pdo;
+    $stm=$pdo->prepare("SELECT date_time,user_id FROM em_class WHERE YEAR(date_time) = ? AND user_id=?");
+    $stm->execute(array($year,$emID));
+
+    return $result = $stm->rowCount();
+}
+
+// Get Yearly Total Pending Task
+function YearlyTask($year,$emID,$status){
+    global $pdo;
+    $stm=$pdo->prepare("SELECT date_time,user_id FROM em_task WHERE YEAR(date_time) = ? AND user_id=? AND status=?");
+    $stm->execute(array($year,$emID,$status));
+
+    return $result = $stm->rowCount();
+}
+
+// Date to Date Practice Class
+function dateTodatePracticeClass($start_date,$end_date,$emID){
+    global $pdo;
+    $stm=$pdo->prepare("SELECT date_time,user_id FROM em_class WHERE date_time BETWEEN  ? AND ? AND user_id=?");
+    $stm->execute(array($start_date,$end_date,$emID));
+
+    return $result = $stm->rowCount();
+}
+
  ?>

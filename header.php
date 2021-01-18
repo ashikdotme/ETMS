@@ -4,11 +4,17 @@ require_once('functions.php');
 
 session_start();
 
-if(!isset($_SESSION['em_user'])){
+if(!isset($_SESSION['em_user']) AND !isset($_COOKIE['rememberUser'])){
     header('location:login.php');
 }
 
-$user_id = $_SESSION['em_user'][0]['u_id'];
+
+
+if(isset($_COOKIE['rememberUser'])){
+    $user_id = $_COOKIE['rememberUser'];
+}else{
+    $user_id = $_SESSION['em_user'][0]['u_id'];
+}
 
  ?>
 <!DOCTYPE html>
@@ -28,6 +34,8 @@ $user_id = $_SESSION['em_user'][0]['u_id'];
     <link
         href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
         rel="stylesheet">
+
+      <link rel="stylesheet" href="admin/assets/bundles/summernote/summernote-bs4.css"> 
 
     <!-- Custom styles for this template-->
     <link href="assets/css/sb-admin-2.min.css" rel="stylesheet">
@@ -103,8 +111,8 @@ $user_id = $_SESSION['em_user'][0]['u_id'];
                 </a>
                 <div id="collapse4" class="collapse" aria-labelledby="heading4" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded"> 
-                        <a class="collapse-item" href="#">New Task</a>
-                        <a class="collapse-item" href="#">All Task</a>
+                        <a class="collapse-item" href="TaskNew.php">New Task</a>
+                        <a class="collapse-item" href="TaskAll.php">All Task</a>
                     </div>
                 </div>
             </li>
@@ -150,13 +158,14 @@ $user_id = $_SESSION['em_user'][0]['u_id'];
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             <span class="mr-2 d-none d-lg-inline text-gray-600 small">
                                 <?php
-                                 echo em_user($_SESSION['em_user'][0]['u_id'],'first_name')." ".em_user($_SESSION['em_user'][0]['u_id'],'last_name');
+                                
+                                 echo em_user($user_id,'first_name')." ".em_user($user_id,'last_name');
                                 ?>
                             </span>
                                 <img class="img-profile rounded-circle"
                                     src="
                                     <?php 
-                                    $photo = em_user($_SESSION['em_user'][0]['u_id'],'photo');
+                                    $photo = em_user($user_id,'photo');
                                     if($photo == null){
                                         echo "assets/img/undraw_profile.svg";
                                     }else{

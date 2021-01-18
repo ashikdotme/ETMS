@@ -39,10 +39,25 @@
 
     <script src="assets/vendor/datatables/jquery.dataTables.min.js"></script>
     <script src="assets/vendor/datatables/dataTables.bootstrap4.min.js"></script>
+    <script src="admin/assets/bundles/summernote/summernote-bs4.js"></script>  
     <script>
         $(document).ready(function() {
           $('#dataTable').DataTable();
         });
+
+        if (jQuery().summernote) {
+            $("#work_details").summernote({
+              dialogsInBody: true,
+              minHeight: 250,
+               toolbar: [
+                ["style", ["bold", "italic", "underline", "clear"]],
+                ["font", ["strikethrough"]],
+                ['para', ['ul', 'ol', 'paragraph']],
+                ['insert', ['link']],
+                 ['color', ['color']],
+              ]
+            });
+          }
 
 
     </script>   

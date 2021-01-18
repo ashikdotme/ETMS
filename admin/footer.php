@@ -112,6 +112,8 @@
   <!-- Page Specific JS File -->
   <script src="assets/js/page/datatables.js"></script>
 
+  <script src="assets/bundles/summernote/summernote-bs4.js"></script>  
+
   <!-- Template JS File -->
   <script src="assets/js/scripts.js"></script>
   <!-- Custom JS File -->

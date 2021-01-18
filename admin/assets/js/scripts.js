@@ -355,7 +355,13 @@ $(function () {
   if (jQuery().summernote) {
     $(".summernote").summernote({
       dialogsInBody: true,
-      minHeight: 250
+      minHeight: 250,
+       toolbar: [
+        ["style", ["bold", "italic", "underline", "clear"]],
+        ["font", ["strikethrough"]],
+        ['para', ['ul', 'ol', 'paragraph']],
+        ['insert', ['link']],
+      ]
     });
     $(".summernote-simple").summernote({
       dialogsInBody: true,

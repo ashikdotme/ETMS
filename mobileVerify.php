@@ -1,5 +1,10 @@
 <?php 
-$user_id = $_SESSION['em_user'][0]['u_id'];
+if(isset($_COOKIE['rememberUser'])){
+    $user_id = $_COOKIE['rememberUser'];
+}else{
+    $user_id = $_SESSION['em_user'][0]['u_id'];
+}
+ 
 $mobile_verify_status = em_user($user_id,'mobile_verify');
 
 if(isset($_POST['send_mobile_code'])){

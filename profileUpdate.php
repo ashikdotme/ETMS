@@ -1,6 +1,10 @@
 <?php require_once('header.php');
 
-$user_id = $_GET['uid'];
+if(isset($_COOKIE['rememberUser'])){
+    $user_id = $_COOKIE['rememberUser'];
+}else{
+    $user_id = $_SESSION['em_user'][0]['u_id'];
+}
 
 
 
