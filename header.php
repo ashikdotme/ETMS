@@ -165,7 +165,7 @@ if(isset($_COOKIE['rememberUser'])){
                                     Task Notification
                                 </h6>
                                 <?php 
-                                $stm=$pdo->prepare("SELECT * FROM em_task WHERE user_id=? AND status=?");
+                                $stm=$pdo->prepare("SELECT * FROM em_task WHERE user_id=? AND status=? ORDER BY t_id DESC");
                                 $stm->execute(array($user_id,'Pending'));
                                 $result = $stm->fetchAll(PDO::FETCH_ASSOC);
                                 foreach ($result as $row):
