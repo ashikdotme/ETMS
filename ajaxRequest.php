@@ -55,10 +55,7 @@ if(isset($_POST['email'])){
     echo json_encode($response);
 
 
-}else{
-    header('location:index.php');
-}
-
+} 
 
 // Submit Reset Code
 if(isset($_POST['userCode'])){
@@ -88,11 +85,7 @@ if(isset($_POST['userCode'])){
 
     echo json_encode($response); 
 }
-else{
-    header('location:index.php');
-}
-
-
+ 
 
 if(isset($_POST['cnew_password'])){
     $user_id = $_POST['user_id'];
@@ -128,9 +121,42 @@ if(isset($_POST['cnew_password'])){
 
 
 }
-else{
-    header('location:index.php');
+ 
+
+// Notifications  
+if(isset($_POST['Notification'])){
+    $noti_user_id = $_POST['noti_user_id'];
+    $count0 = $_POST['count0'];
+
+   
+    
+
+    if($count0 == 0){
+
+        $stm=$pdo->prepare("UPDATE em_task SET task_read=? WHERE user_id=?");
+        $stm->execute(array(1,$noti_user_id));
+
+    }else{
+        $stm=$pdo->prepare("SELECT user_id,status,task_read FROM em_task WHERE user_id=? AND task_read=? AND status=?");
+        $stm->execute(array($noti_user_id,0,'Pending'));
+        $userCount4=$stm->rowCount();
+    }
+
+
+
+    $response = array(
+        'noticount' =>  $userCount4,
+        'count0' => $count0
+    );
+
+    echo json_encode($response);
+
 }
+ 
+
+
+
+
 
 
  ?>

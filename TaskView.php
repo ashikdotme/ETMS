@@ -19,6 +19,32 @@ if(isset($_POST['submit_work'])){
   }else{
     $stm=$pdo->prepare("UPDATE em_task SET work_details=?,updated_at=?,status=? WHERE user_id=? AND t_id=?");
     $stm->execute(array($work_details,$updated_at,$status,$user_id,$tid));
+
+     // Send Email 
+    $sub = "Submitted a Task";
+    $message = "Submitted a Task";
+    $message .= '
+    <table>
+      <tr>
+        <td>Employee Name:</td>
+        <td>'.em_user($user_id,'first_name').' '.em_user($user_id,'last_name').'</td> 
+
+      </tr>
+       <tr>
+        <td>Status:</td>
+        <td>'.$status.'</td> 
+
+      </tr>
+      
+       <tr>
+        <td>Work Details:</td>
+        <td>'.$work_details.'</td> 
+
+      </tr>
+    </table>
+    '; 
+    ETMS_EMAIL_ADMIN($sub,$message);
+    
     $success = "Work Submitted Successfully!";
   }
 }

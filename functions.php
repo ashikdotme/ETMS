@@ -154,4 +154,24 @@ function dateTodatePracticeClass($start_date,$end_date,$emID){
     return $result = $stm->rowCount();
 }
 
+
+
+// Email 
+
+function ETMS_EMAIL_ADMIN($sub,$message){
+    $to = "ashiktpi30@gmail.com";
+
+    $from = "ashikcse3@gmail.com";
+    
+    $headers  = 'MIME-Version: 1.0' . "\r\n";
+    $headers .= 'Content-type: text/html; charset=iso-8859-1' . "\r\n";
+
+    $mail = mail($to,$sub,$message,$headers);
+    if($mail == true){
+        return true;
+    }else{
+        return false;
+    }
+}
+
  ?>

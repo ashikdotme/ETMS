@@ -27,6 +27,33 @@ if(isset($_POST['submit_class'])){
 		$stm = $pdo->prepare("INSERT INTO em_class(user_id,class_name,class_details,date_time) VALUES(?,?,?,?)");
 		$stm->execute(array($user_id,$class_name,$class_details,$today));
 
+		
+		// Send Email 
+		$sub = "Create A New Class";
+		$message = "Created New Class";
+		$message .= '
+		<table>
+			<tr>
+				<td>Employee Name:</td>
+				<td>'.em_user($user_id,'first_name').' '.em_user($user_id,'last_name').'</td> 
+
+			</tr>
+			<tr>
+				<td>Class Name:</td>
+				<td>'.$class_name.'</td> 
+
+			</tr>
+			<tr>
+				<td>Class Details:</td>
+				<td>'.$class_details.'</td> 
+
+			</tr>
+		</table>
+		';
+
+
+		ETMS_EMAIL_ADMIN($sub,$message);
+
 		$success = "Class Submit Successfully!";
 
 
