@@ -154,6 +154,77 @@ if(isset($_POST['Notification'])){
 }
  
 
+// Admin Notifications  
+if(isset($_POST['AdNotification'])){
+
+    $count0 = $_POST['count0'];
+
+   
+    
+
+    if($count0 == 0){ 
+        $stm=$pdo->prepare("UPDATE em_class SET ad_read=? WHERE ad_read=?");
+        $stm->execute(array(1,0));
+
+        $stm=$pdo->prepare("UPDATE em_task SET ad_read=? WHERE status=?");
+        $stm->execute(array(1,'Submitted'));
+
+        
+
+    }else{
+        $stm=$pdo->prepare("SELECT ad_read FROM em_class WHERE ad_read=?");
+        $stm->execute(array(0));
+        $ClassNotificationCount=$stm->rowCount();
+
+
+        $stm=$pdo->prepare("SELECT ad_read,status FROM em_task WHERE  ad_read=? AND status=?");
+        $stm->execute(array(0,'Submitted'));
+        $TaskCount=$stm->rowCount();
+
+        $totalNotifications = $ClassNotificationCount+$TaskCount;
+    }
+
+
+
+    $response = array(
+        'noticount' =>  $totalNotifications,
+        'count0' => $count0
+    );
+
+    echo json_encode($response);
+
+}
+ 
+
+
+// Admin  Read Notifications  
+if(isset($_POST['tableName'])){
+
+    $tableName = $_POST['tableName'];
+    $DataId = $_POST['DataId'];
+
+    if($tableName == 'em_class'){
+        $stm=$pdo->prepare("UPDATE em_class SET ad_read=? WHERE c_id=?");
+        $stm->execute(array(1,$DataId));
+    }
+
+    if($tableName == 'em_task'){
+         $stm=$pdo->prepare("UPDATE em_task SET ad_read=? WHERE status=? AND t_id=?");
+         $stm->execute(array(1,'Submitted',$DataId));
+
+    }
+
+   
+    $response = array(
+        'table_name' =>  $tableName,
+        'DataId' => $DataId
+    );
+
+    echo json_encode($response);
+
+}
+ 
+
 
 
 

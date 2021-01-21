@@ -119,7 +119,77 @@
   <!-- Custom JS File -->
   <script src="assets/js/custom.js"></script>
 </body>
+<script>
+  function Notifications(count0){
+      var count0 = count0;
+      var post_type = 'AdNotification';
+      $.ajax({
+          type:'POST',
+          url:'../ajaxRequest.php',
+          dataType:'JSON',
+          data:{
+              AdNotification:post_type,
+              count0:count0
+          },
+          success:function(response){
+              if(response.noticount != null){
+                  if(response.noticount == 0){
+                      $('#NotificationsCount').hide();
+                  }else{
+                      $('#NotificationsCount').text(response.noticount);
+                  }
+              }
+          }
+      });
+  }
 
 
-<!-- blank.html  21 Nov 2019 03:54:41 GMT -->
+    $('.dropdown-item').click(function(){
+        // Notifications(count0 = 0);
+        
+        var item_id = $(this).data('id');
+        var table_name = $(this).data('table');
+        
+        ReadNotifications(table_name,item_id);
+
+        setTimeout(function(){
+            Notifications(count0=1); 
+        },1000);
+ 
+        return false;
+
+    });
+
+ Notifications(count0=1); 
+
+
+
+   function ReadNotifications(tableName,DataId){
+      var tableName = tableName;
+      var DataId = DataId;
+      $.ajax({
+          type:'POST',
+          url:'../ajaxRequest.php',
+          dataType:'JSON',
+          data:{
+              tableName:tableName,
+              DataId:DataId
+          },
+          success:function(response){
+             // alert(response);
+            if(response.table_name == 'em_class'){
+              setTimeout(function(){ window.location.href='ClassAll.php'; }, 1000);  
+
+            }
+            if(response.table_name == 'em_task'){
+              setTimeout(function(){ window.location.href='TaskView.php?tid='+response.DataId; }, 1000);  
+
+            }
+          }
+      });
+  }
+
+
+
+</script>
 </html>

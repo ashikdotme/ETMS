@@ -17,8 +17,8 @@ if(isset($_POST['submit_work'])){
   if(empty($work_details)){
     $error = "Field is Required!";
   }else{
-    $stm=$pdo->prepare("UPDATE em_task SET work_details=?,updated_at=?,status=? WHERE user_id=? AND t_id=?");
-    $stm->execute(array($work_details,$updated_at,$status,$user_id,$tid));
+    $stm=$pdo->prepare("UPDATE em_task SET work_details=?,updated_at=?,status=?,ad_read=? WHERE user_id=? AND t_id=?");
+    $stm->execute(array($work_details,$updated_at,$status,0,$user_id,$tid));
 
      // Send Email 
     $sub = "Submitted a Task";

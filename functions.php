@@ -174,4 +174,22 @@ function ETMS_EMAIL_ADMIN($sub,$message){
     }
 }
 
+
+// Admin Total Today Practice Class
+function todayPracticeClass($date){
+    global $pdo;
+    $stm=$pdo->prepare("SELECT date_time,user_id FROM em_class WHERE DATE(date_time) = ?");
+    $stm->execute(array($date));
+
+    return $result = $stm->rowCount();
+}
+
+// Total Pending  / Completed task
+function totalTask($status){
+    global $pdo;
+    $stm=$pdo->prepare("SELECT status FROM em_task WHERE status=?");
+    $stm->execute(array($status));
+
+    return $result = $stm->rowCount();
+}
  ?>
